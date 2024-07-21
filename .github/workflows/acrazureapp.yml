@@ -28,17 +28,17 @@ jobs:
     
     - uses: azure/docker-login@v1
       with:
-        login-server: cloudquicklabsacr.azurecr.io
+        login-server: fidoncontainercr.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}
-        docker push cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}     
+        docker build . -t fidoncontainercr.azurecr.io/firesharkapp:${{ github.sha }}
+        docker push fidoncontainercr.azurecr.io/firesharkapp:${{ github.sha }}     
       
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: 'CloudQuickLabsWebApp'
-        images: 'cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}'
+        app-name: 'firesharkapi'
+        images: 'fidoncontainercr.azurecr.io/firesharkapp:${{ github.sha }}'
     
     - name: Azure logout
       run: |
