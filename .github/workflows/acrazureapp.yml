@@ -13,7 +13,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: dotnet
+        working-directory: fireshark
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
